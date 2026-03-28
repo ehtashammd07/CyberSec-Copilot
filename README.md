@@ -160,7 +160,7 @@ ollama --version
 ## 📂 Step 2 — Clone Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ehtashammd07/CyberSec-Copilot.git
 cd cybersec-copilot-phi
 ```
 
