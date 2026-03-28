@@ -3,6 +3,23 @@
 AI-powered cybersecurity assistant running on Microsoft Phi via Ollama.
 No Docker. No cloud. Runs locally on Windows with Python 3.13.
 
+
+
+https://github.com/user-attachments/assets/53a54f70-c993-45db-a489-f76e0144be1b
+<img width="1919" height="875" alt="Screenshot 2026-03-25 152821" src="https://github.com/user-attachments/assets/e1c6c132-643a-416e-a280-bede03f91588" />
+<img width="1919" height="876" alt="Screenshot 2026-03-25 152842" src="https://github.com/user-attachments/assets/2dbd8478-be91-4674-875b-33fb64159772" />
+
+## What Is This?
+
+CyberSec Copilot is a local AI assistant built specifically for cybersecurity tasks. You can:
+
+- **Chat** with it about vulnerabilities, CVEs, attack techniques, and defences
+- **Analyze** log files and source code to detect threats automatically
+- Switch between **Attacker**, **Defender**, and **Explain** perspectives
+- Get structured results with severity ratings, OWASP categories, and mitigation steps
+
+It uses a **RAG (Retrieval-Augmented Generation)** pipeline backed by a built-in OWASP and CVE knowledge base, so answers are grounded in real security knowledge — not just the model's training data.
+
 ## Why Phi?
 
 | Model  | Size   | Speed  | Quality |
@@ -124,3 +141,135 @@ Slow first response
 Port in use
   -> netstat -ano | findstr :8000
   -> taskkill /PID <number> /F
+
+
+# 🚀 CyberSec Copilot (Phi) — Windows Setup Guide
+
+## ✅ Step 1 — Verify Installation
+
+Open Command Prompt (CMD) and run:
+
+```bash
+python --version
+node --version
+ollama --version
+```
+
+---
+
+## 📂 Step 2 — Clone Repository
+
+```bash
+git clone <your-repo-url>
+cd cybersec-copilot-phi
+```
+
+---
+
+## 🤖 Step 3 — Pull Phi Model
+
+```bash
+ollama pull phi
+```
+
+Test the model:
+
+```bash
+ollama run phi
+```
+
+---
+
+## ⚙️ Step 4 — Backend Setup
+
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+---
+
+## 🔐 Step 5 — Configure Environment
+
+Create a `.env` file inside the `backend/` directory:
+
+```env
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=phi
+```
+
+---
+
+## ▶️ Step 6 — Run Backend
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend will run at:
+
+* API Base: http://127.0.0.1:8000
+* API Docs: http://127.0.0.1:8000/docs
+
+---
+
+## 🌐 Step 7 — Frontend Setup
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend will run at:
+
+* http://localhost:3000
+
+---
+
+## 🔁 Running the Project (Next Time)
+
+You only need to run:
+
+### 🖥️ Terminal 1 (Backend)
+
+```bash
+cd backend
+venv\Scripts\activate
+uvicorn app.main:app --reload
+```
+
+### 🌐 Terminal 2 (Frontend)
+
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
+## 🧠 Tech Stack
+
+* **LLM**: Phi (via Ollama)
+* **Backend**: FastAPI (Python)
+* **Frontend**: Next.js + React
+* **AI Integration**: Local LLM (Ollama)
+
+---
+
+## 📌 Notes
+
+* Ensure **Ollama is running** before starting the backend.
+* First run may take time due to model loading.
+* Compatible with **Windows environment**.
+
+---
+
+## 📄 License
+
+MIT License
+
